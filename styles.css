@@ -1,12 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     margin: 0;
     padding: 0 20px;
-    background: #f7f7f7;
+    background: #2d2d38;
+    color: #eae6f1;
 }
-h1 {
+
+h1, h2, h3, h4 {
+    text-align: center;
+    color: #f2f0ff;
+}
+
+p, li, a {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.08em;
+    line-height: 1.7;
     text-align: center;
 }
+
+img {
+    display: block;
+    margin: 24px auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+button, .see-more-btn {
+    display: block;
+    margin: 32px auto 0 auto;
+    padding: 12px 36px;
+    background: linear-gradient(90deg, #593c8d 0%, #d16ba5 100%);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.1em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+button:hover, .see-more-btn:hover {
+    background: linear-gradient(90deg, #432b73 0%, #b64f87 100%);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+a {
+    color: #d16ba5;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #e39ec3;
+    text-decoration: underline;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -14,16 +68,18 @@ h1 {
     max-width: 1100px;
     margin: 40px auto;
 }
+
 .project-box {
-    background: #fff;
+    background: #3a3a4d;
     border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 24px 16px 16px 16px;
     min-height: 420px;
 }
+
 .project-box img {
     width: 100%;
     max-width: 260px;
@@ -32,27 +88,17 @@ h1 {
     border-radius: 8px;
     margin-bottom: 16px;
 }
+
 .project-title {
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 8px;
     text-align: center;
+    color: #f2f0ff;
 }
+
 .project-desc {
     flex: 1;
     margin-bottom: 16px;
     text-align: center;
-}
-.see-more-btn {
-    background: #0078d4;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 24px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-.see-more-btn:hover {
-    background: #005fa3;
 }
