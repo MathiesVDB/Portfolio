@@ -7,34 +7,39 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 
-<button onclick="window.location.href='../index.html'">Back to Home</button>
+<button onclick="window.location.href='../index.html'">Home</button>
 
 <body>
     <h1>Director AI Research</h1>
+    <br>
     <p>
     This project was created during my second year at Howest DAE for the course Gameplay Programming. <br>
     The goal was for us to research a topic of our choice that had something to do with AI in games (not the ChatGPT kind). <br>
     Together with the research we also had to create a small project using whatever we were researching to show we understood what we were talking about and doing. <br>
     I chose to research Director AI's, however since the github repository is private by the school I will show my research below and am unable to provide the demo. <br>
     </p>
-
+    <br>
     <h1>Research Topic: Director AI</h1>
     <h2>Introduction</h2>
     <p>
     During one of my courses at Howest DAE I got the task to research some kind of AI and try to create it myself. I immediately looked for something cool to research that would still be something I could create myself. The first thing I looked up was how the AI worked in a game which I thought had very cool and unique AI for its main antagonist: Alien Isolation. I learned that the alien (the antagonist in Alien Isolation) was controlled by its own brain and a director AI. Since the brain of the AI was just a very large behaviour tree I decided to look more into the other part: the Director AI.
     </p>
+    <br>
     <h3>What is a Director AI</h3>
     <p>
     A director AI is a class that has access to a large amount of data and reacts off of how this data changes, an example of this is the player's stresslevel, but more on that later. The term 'Director' comes from the movie industry where the director is the one that controls everything, which is practically what the AI does as well. It is essentially a state machine that changes state depending on what is happening in the game and mainly with the player.
     </p>
+    <br>
     <h3>Why use a Director AI</h3>
     <p>
     Many games, such as Call of Duty for example, can be quite repetitive when playing the game multiple times (in the case of Call of Duty I am reffering to replaying the campaign). This is because every playthrough goes exactly the same. Events are triggered by triggerboxes which means things will only happen when a player is in a certain spot and every playthrough the same things happen at the same position. This is not necessarily a bad thing, but what if you want a more dynamic experience? This is where the director AI comes in. For example the director in Alien Isolation will randomly tell the alien to attack the player when the player is a bit too comfortable, which keeps the player on their toes. The director also prevents having to teleport the alien all the time to make sure he is close to the player, this works because the director always knows where the player is and just makes sure the alien stays close around that location. In Left 4 Dead a director AI is also used and you can actually toggle debug mode when playing. This way you can see what the director is thinking, as seen in the image below.
     </p>
     <img src="../Resources/Left4DeadDirector.png" alt="Left 4 Dead Director" width="500">
+    <br>
     <p>
     I could go on and on about the function of the director in Alien Isolation and other games that use it such as Left 4 Dead, but let's just get to the part where I make it myself.
     </p>
+    <br>
     <h2>Design</h2>
     <p>
     I made my project in Unity using C#. I chose to use Unity as I needed a very quick and small game to let the director...direct. Unity is perfect for this as it is easy to get a small game going where I could implement my Director AI. In Unity it is also very easy to see the parameters of the director AI in the inspector which saves time having to output everything to show how it works. In the image you can see how Unity debug mode offers us a lot of insight on what the director is taking into account.
@@ -42,38 +47,50 @@
     <img src="../Resources/Editor.png" alt="Editor" width="500">
 
     <img src="../Resources/CloseEditor.png" alt="CloseEditor" width="500">
+    <br>
     <p>
     However the real question is how do we get started on this? First I make a simple player and some enemies that will chase the player. Then some simple pickups to create a tiny game loop. After this is implemented we get to the fun part: creating the director AI script. The director has control over everything except the player, it spawns and despawns enemies and pickups to control the player's stress level to make sure the game stays entertaining.
     </p>
     <img src="../Resources/Spawn.png" alt="Spawn" width="500">
+    <br>
     <p>
     But how do we make sure the game stays entertaining? 'Oh I know! I'll just spawn massive hordes of enemies to make sure the player stays in action!' WRONG! Simply applying constant pressure gets stale or annoying for the player and leaves no breathing room. What we want to do is make the director turn up the heat, but also turn it down again. As I said in the beginning, the director is essentially a finite state machine. The finite state machine I created for this is based on the director in Left 4 Dead, it has 3 different states: BuildUp, Peak and Relax.
     </p>
     <img src="../Resources/States.png" alt="States" width="500">
+    <br>
 
+    <br>
     <h4>The buildup:</h4>
     <p>
     During this stage the director spawns more pickups to provide the player with enough resources to survive the incoming action. It also starts spawning more enemies to get the player's stress up. Overall this stage just prepares the player for what is coming while also building up towards the peak.
     </p>
     <img src="../Resources/StateUpdate.png" alt="buildup" width="500">
+    <br>
 
+    <br>
     <h4>The peak:</h4>
     <p>
     When the director enters its peak it starts to spawn hordes instead of individual enemies and keeps spawning more enemies to make sure the player is constantly fighting. As the name suggests it makes sure the player's stress peaks and they have to use all the resources that have been given in the buildup.
     </p>
     <img src="../Resources/Peak.png" alt="Peak" width="500">
+    <br>
+    <br>
 
     <h4>The relax:</h4>
     <p>
     The player finally gets some room to breathe and lick their wounds. The enemies stop spawning, besides from some lonely random monster that shouldn't be much of a threat. The pickup spawn rates even back out to get the player back on his feet, but not at a level like the buildup stage pumps the player full of ammo and healthpacks. This stage should not last too long to make sure the player doesn't get bored but should be long enough to calm the player back down from all the adrenaline and lower the player's stress.
     </p>
     <img src="../Resources/Relax.png" alt="Relax" width="500">
+    <br>
+    <br>
 
     <h4>Extra:</h4>
     <p>
     Another role of the director is to make sure the player doesn't break rules set in the game. For example going out of bounds. When the player goes out of bounds the player's stress spikes and overwhelmes them with enemies to punish them for leaving the designated play-area. As seen in the GIF below (which is of course over-exaggerated) the director immediately reacts when the player breaks one of the game's 'rules'.
     </p>
     <img src="../Resources/OutOfBounds.gif" alt="OutOfBounds" width="500">
+    <br>
+    <br>
 
     <h4>Player stress</h4>
     <p>
@@ -88,6 +105,8 @@
     This can also work the other way around. If the stress is super low during the relax stage it goes into the build up faster, to make sure the player does not get bored.
     </p>
     <img src="../Resources/Transition.png" alt="Transition" width="500">
+    <br>
+    <br>
 
 
     <h2>Result</h2>
@@ -100,6 +119,7 @@
 
     Of course this is just a small project so it does not show the complete power of the director AI, but it is definitely worth looking into.
     </p>    
+    <br>
 
     <h2>References</h2>
 <p>
@@ -110,7 +130,11 @@
   <a href="https://left4dead.fandom.com/wiki/The_Director">The Director - Left 4 Dead Wiki</a><br>
   <a href="https://www.toolify.ai/ai-news/unveiling-the-power-of-ai-directors-in-video-games-1521327?utm_source=chatgpt.com">Toolify Article</a><br>
 </p>
-
-
+<br>
+<button onclick="window.location.href='../index.html'">Home</button>
+<br>
+<br>
+<br>
 </body>
+
 </html>

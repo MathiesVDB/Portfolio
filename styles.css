@@ -102,3 +102,38 @@ a:hover {
     margin-bottom: 16px;
     text-align: center;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #593c8d 0%, #d16ba5 100%);
+    display: flex;
+    justify-content: center;
+    gap: 20px;   
+    padding: 8px 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: #f5f5f5;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.navbar a:hover {
+    background: #593c8d;
+}
+
+.navbar a:active {
+    background: #432b73;
+    transform: scale(0.96);
+}
